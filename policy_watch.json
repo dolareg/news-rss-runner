@@ -1,0 +1,5 @@
+[
+ {"name":"fed-press","mode":"rss","url":"https://www.federalreserve.gov/feeds/press_all.xml"},
+ {"name":"sec-press","mode":"rss","url":"https://www.sec.gov/news/pressreleases.rss"},
+ {"name":"safe-fx","mode":"html","url":"https://www.safe.gov.cn/safe/zcfg/index.html","link_regex":"/safe/20\\d{2}/\\d{4}/\\d+\\.html"}
+]

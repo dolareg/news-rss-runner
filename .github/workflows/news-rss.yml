@@ -6,6 +6,9 @@ on:
     - cron: '8 11 * * *'   # 晚报: 北京 20:00 前 (11:08 UTC)
   workflow_dispatch: {}    # 手动触发 (demo / 补跑)
 
+permissions:
+  contents: write          # policy state commit-back (github-actions[bot], ephemeral token)
+
 jobs:
   fetch:
     runs-on: ubuntu-latest
@@ -19,6 +22,32 @@ jobs:
           set -eo pipefail
           python3 runner_news_gh.py 2>&1 | tee runner.log
 
+      - name: Run ticker news (no-op if tickers.txt empty)
+        shell: bash
+        run: |
+          set -eo pipefail
+          python3 ticker_news.py 2>&1 | tee ticker_news.log
+
+      - name: Run policy watch
+        shell: bash
+        run: |
+          set -eo pipefail
+          python3 policy_watch.py 2>&1 | tee policy_watch.log
+
+      - name: Commit policy state (baseline persistence + repo keepalive)
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add policy_state/
+          if git diff --cached --quiet; then
+            echo "no policy state change"
+          else
+            git commit -m "policy state: $(date -u +%FT%TZ)"
+            git pull --rebase -q || true
+            git push
+          fi
+
       - name: Upload payload
         uses: actions/upload-artifact@v4
         with:
@@ -26,5 +55,9 @@ jobs:
           path: |
             news.jsonl.gz
             runner.log
+            ticker_news.jsonl
+            ticker_news.log
+            policy_diff.json
+            policy_watch.log
           retention-days: 7
           if-no-files-found: error
