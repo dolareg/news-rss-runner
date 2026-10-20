@@ -1,0 +1,30 @@
+name: news-rss-runner
+
+on:
+  schedule:
+    - cron: '8 23 * * *'   # 早报: 北京 08:00 前 (23:08 UTC, 含 GH 抖动余量)
+    - cron: '8 11 * * *'   # 晚报: 北京 20:00 前 (11:08 UTC)
+  workflow_dispatch: {}    # 手动触发 (demo / 补跑)
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run RSS runner (7 rounds x 7 min)
+        shell: bash
+        run: |
+          set -eo pipefail
+          python3 runner_news_gh.py 2>&1 | tee runner.log
+
+      - name: Upload payload
+        uses: actions/upload-artifact@v4
+        with:
+          name: news-payload
+          path: |
+            news.jsonl.gz
+            runner.log
+          retention-days: 7
+          if-no-files-found: error
