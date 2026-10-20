@@ -1,3 +1,8 @@
 __pycache__/
 news.jsonl*
 runner.log
+ticker_news.jsonl
+ticker_news.log
+policy_diff.json
+policy_watch.log
+policy_state/

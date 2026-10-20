@@ -1,3 +1,15 @@
-# 持仓 watchlist — 每行: SYMBOL 或 SYMBOL|中文名
-# ⚠️ public repo: 只放 ticker symbol, 不放数量/成本/策略 (铁律: 隐私不入公开仓库)
-# 等 Anne 回 12 个美股持仓后填入; 本文件无有效行时 ticker job 自动 no-op (空输出)
+# 持仓 watchlist — 每行: SYMBOL|中文名 (中文别名仅用于 gnews 中文检索)
+# ⚠️ 隐私边界 (2026-10-20 拍板: public repo 可放 ticker): 本文件只放 symbol + 通用产品名。
+#    持仓数量 / 成本 / 仓位比例 / 策略 / 真仓与观察分类等, 一律不进本 repo。
+ABBV|艾伯维
+CB|丘博
+QQQM|纳斯达克100ETF
+SCHW|嘉信理财
+RTX|雷神
+MS|摩根士丹利
+GOOGL|谷歌
+CIEN|Ciena
+SPCX|SpaceX
+BRK-B|伯克希尔
+LMT|洛克希德马丁
+UNH|联合健康
