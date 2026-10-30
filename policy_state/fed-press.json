@@ -1,5 +1,9 @@
 [
  {
+  "title": "Federal Reserve Board announces approval of application by The Bank of Nova Scotia",
+  "link": "https://www.federalreserve.gov/newsevents/pressreleases/orders20261029a.htm"
+ },
+ {
   "title": "Federal Reserve issues FOMC statement",
   "link": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm"
  },
@@ -74,9 +78,5 @@
  {
   "title": "Federal Reserve issues FOMC statement",
   "link": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm"
- },
- {
-  "title": "Federal Reserve Board and Federal Open Market Committee release economic projections from the September 15-16 FOMC meeting",
-  "link": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916b.htm"
  }
 ]
