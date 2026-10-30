@@ -3,7 +3,7 @@ name: news-rss-runner
 on:
   schedule:
     - cron: '8 23 * * *'   # 早报: 北京 08:00 前 (23:08 UTC, 含 GH 抖动余量)
-    - cron: '8 11 * * *'   # 晚报: 北京 20:00 前 (11:08 UTC)
+    - cron: '8 5 * * *'    # 晚报: 11:08 那班实测中位迟到 4.8h (3.3-6.3h), 提前 6h 让实际落在 08:25-11:25 UTC (2026-10-30 Tesla)
   workflow_dispatch: {}    # 手动触发 (demo / 补跑)
 
 permissions:
